@@ -1,6 +1,5 @@
 # MERN WEB DEVELOPMENT
 
-## _HTML-Tailwind-Projects_
 A collection of projects built using HTML , Tailwind CSS, showcasing my skills in building responsive and visually appealing web pages.
 
 ---
