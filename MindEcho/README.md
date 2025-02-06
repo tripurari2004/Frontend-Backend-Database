@@ -14,10 +14,6 @@ MindEcho is a platform fosters insightful conversations by enabling users to ask
 - **Node.js:** Server-side runtime
 - **Express.js:** Web framework for API creation
 
-### Database
-- **MongoDB:** NoSQL database for data persistence
-- **Mongoose:** Object Data Modeling (ODM) for MongoDB
-
 ---
 
 ## Installation
