@@ -1,0 +1,40 @@
+h1{
+    color: maroon;
+}
+
+.post{
+    background-color: blanchedalmond;
+    padding: 1rem;
+    border: 1px solid maroon;
+    border-radius: 1rem;
+    width: 500px;
+    text-wrap: wrap;
+    box-shadow: 4px 5px 5px 1px rgba(0, 0, 255, .2);
+}
+
+.user{
+    font-style: italic;
+    font-weight: bold;
+}
+
+.posts{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.button{
+    text-align: center;
+}
+
+.button1{
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+}

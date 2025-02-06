@@ -1,0 +1,56 @@
+<% layout('/layouts/boilerplate') -%>
+
+    <body>
+        <div class="row">
+            <div class="col-6 offset-3">
+                <h2 class="mb-5">Edit your Listing</h2>
+                <form method="POST" action="/listings/<%= data._id %>?_method=PUT">
+                    <div class="mb-5">
+                        <label for="title" class="form-label fw-bold"><span class="text-danger">* </span>Title</label>
+                        <input type="text" id="title" class="form-control" name="listing[title]"
+                            value="<%= data.title %>">
+                    </div>
+
+                    <div class="mb-5">
+                        <label for="description" class="form-label fw-bold"><span class="text-danger">*
+                            </span>Description</label>
+                        <textarea class="form-control" name="listing[description]"> <%= data.description %></textarea>
+                    </div>
+
+                    <div class="mb-5">
+                        <label for="image" class="form-label fw-bold"><span class="text-danger">* </span>Image</label>
+                        <input type="text" id="image" class="form-control" name="listing[image]"
+                            value="<%= data.image %>">
+                    </div>
+
+                    <div class="mb-5">
+                        <label for="price" class="form-label fw-bold"><span class="text-danger">* </span>Price</label>
+                        <input type="number" id="price" class="form-control" name="listing[price]"
+                            value="<%= data.price %>">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="mb-5">
+                                <label for="location" class="form-label fw-bold"><span class="text-danger">*
+                                    </span>Location</label>
+                                <input type="text" id="location" class="form-control" name="listing[location]"
+                                    value="<%= data.location %>">
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-7">
+                            <div class="mb-5">
+                                <label for="country" class="form-label fw-bold"><span class="text-danger">*
+                                    </span>Country</label>
+                                <input type="text" id="country" class="form-control" name="listing[country]"
+                                    value="<%= data.country %>">
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-center"><button class="btn add-btn mb-3">Edit</button></p>
+                </form>
+            </div>
+        </div>
+    </body>

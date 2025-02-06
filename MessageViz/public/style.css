@@ -1,0 +1,164 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background: url("./Gradient-Round-Up-Featured-Image.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.chats {
+    gap: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.chat {
+    width: 400px;
+    padding: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    background: linear-gradient(135deg, #7F7FD5, #91EAE4);
+    border-radius: 12px;
+    padding: 24px;
+    color: white;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chat-form {
+    width: 450px;
+    padding: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    background: linear-gradient(135deg, #7F7FD5, #91EAE4);
+    border-radius: 12px;
+    padding: 24px;
+    color: white;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.08);
+}
+
+.chat:hover{
+    transform: rotateY(15deg) rotateX(15deg);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+}
+
+/* .btn {
+    height: 30px;
+    width: 100px;
+    background: #2196F3;
+    transition: background-color 0.3s ease;
+    border: none;
+    border-radius: 5px;
+    font-weight: bolder;
+    font-size: large;
+    cursor: pointer;
+} */
+
+/* .btn1{
+    height: 30px;
+    width: 130px;
+    background: #2196F3;
+    transition: background-color 0.3s ease;
+    border: none;
+    border-radius: 5px;
+    font-weight: bolder;
+    font-size: large;
+    cursor: pointer;
+}
+
+.btn2{
+    height: 30px;
+    width: 100px;
+    background: #d2e46a;
+    transition: background-color 0.3s ease;
+    border: none;
+    border-radius: 5px;
+    font-weight: bolder;
+    font-size: large;
+    cursor: pointer;
+}
+
+.btn2:hover{
+    background: #deff24;
+}
+
+.btn3{
+    height: 30px;
+    width: 100px;
+    background: #e46a6a;
+    transition: background-color 0.3s ease;
+    border: none;
+    border-radius: 5px;
+    font-weight: bolder;
+    font-size: large;
+    cursor: pointer;
+}
+
+.btn3:hover{
+    background: #ff2424;
+}
+
+.btn:hover,.btn1:hover {
+    background: #1976D2;
+}
+
+.footer{
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.newChart{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat1 {
+    height: 250px;
+    width: 400px;
+    padding: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    background: linear-gradient(135deg, #7F7FD5, #91EAE4);
+    border-radius: 12px;
+    padding: 24px;
+    color: white;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.inp{
+    border: none;
+    border-radius: 5px;
+    background: #f1caca;
+    padding: 12px;
+}
+
+.inp:hover{
+    background: #ffd6a5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.inp:focus{
+    background: #c1f0f6; 
+    box-shadow: 0 0 8px #5e90f2;
+    outline: none;
+}
+
+.inp::placeholder{
+    font-size: 1rem;
+} */
