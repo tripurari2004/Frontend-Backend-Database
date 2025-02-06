@@ -38,5 +38,5 @@ npm install
 
 ### 4. Start local server
 ```bash
-node app.js
+node app.js / nodemon app.js
 
