@@ -14,19 +14,19 @@ let newChat = [
     {
         from: "Tripurari",
         to: "Sweta",
-        msg: "Hello meri pyari ardhangani payal",
+        msg: "Hello How are you",
         created_at: new Date()
     },
     {
         from: "Sweta",
         to: "Treta",
-        msg: "Hello mere marad laddu",
+        msg: "I am fine",
         created_at: new Date()
     },
     {
         from: "Treta",
-        to: "Payal Ladoo loves each other",
-        msg: "Hello mere marad laddu",
+        to: "Payal",
+        msg: "Hello laddu",
         created_at: new Date()
     }
 ]
