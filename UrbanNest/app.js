@@ -1,22 +1,27 @@
 const express = require('express')
 const app = express()
-const mongoose  = require('mongoose')
+const mongoose = require('mongoose')
 const port = 3000
 const listing = require('./models/listing.js')
 const path = require('path')
 const methodOverride = require('method-override')
 const ejsMate = require('ejs-mate')
+const wrapAsync = require('./utils/wrapAsync.js')
+const ExpressError = require('./utils/ExpressError.js')
+const { MessageEvent } = require('http')
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'))
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.engine('ejs', ejsMate);
 app.use(express.static(path.join(__dirname, "/public")))
 
-main().then((res)=>{
+
+// Database
+main().then((res) => {
     console.log('Connected to db')
-}).catch((err)=>{
+}).catch((err) => {
     console.log(err)
 })
 
@@ -24,66 +29,78 @@ async function main() {
     await mongoose.connect('mongodb://127.0.0.1:27017/urbannest')
 }
 
-app.get('/listings', async (req,res)=>{
-    let list = await listing.find()
-    res.render('listings/index.ejs', {list})
-})
 
-app.get('/listings/new',(req,res)=>{
+// Home Route
+app.get('/listings', wrapAsync(async (req, res) => {
+    let list = await listing.find()
+    res.render('listings/index.ejs', { list })
+}))
+
+
+// New Route
+app.get('/listings/new', (req, res) => {
     res.render('listings/new.ejs')
 })
 
-app.get('/listings/:id',async (req,res)=>{
-    let {id} = req.params
-    let data = await listing.findById(id)
-    res.render('listings/show.ejs', {data})
-})
 
-app.post('/listings',async (req,res)=>{
-    let newlisting = new listing(req.body.listing) 
+//Show Route
+app.get('/listings/:id', wrapAsync(async (req, res) => {
+    let { id } = req.params
+    let data = await listing.findById(id)
+    res.render('listings/show.ejs', { data })
+}))
+
+
+// Create Route
+app.post('/listings', wrapAsync(async (req, res, next) => {
+    if(!req.body.listing){
+        throw new ExpressError(400, 'Send valid data for listing')
+    }
+    let newlisting = new listing(req.body.listing)
     await newlisting.save()
     res.redirect('/listings')
-})
+}))
 
 
-app.get('/listings/:id/edit',async (req,res)=>{
-    let {id} = req.params
+
+// Edit Route
+app.get('/listings/:id/edit', wrapAsync(async(req, res) => {
+    let { id } = req.params
     let data = await listing.findById(id)
-    res.render('listings/edit.ejs', {data})
-})
+    res.render('listings/edit.ejs', { data })
+}))
 
 
-app.put('/listings/:id', async(req,res)=>{
-    let {id} = req.params
-    await listing.findByIdAndUpdate(id,{...req.body.listing})
+
+// Update Route
+app.put('/listings/:id', wrapAsync(async(req, res) => {
+    let { id } = req.params
+    if(!req.body.listing){
+        throw new ExpressError(400, 'Send valid data for listing')
+    }
+    await listing.findByIdAndUpdate(id, { ...req.body.listing })
     res.redirect(`/listings/${id}`)
 
-})
+}))
 
-app.delete('/listings/:id', async(req,res)=>{
-    let {id} = req.params
+
+// Delete Route
+app.delete('/listings/:id', wrapAsync(async(req, res) => {
+    let { id } = req.params
     await listing.findByIdAndDelete(id)
     res.redirect('/listings')
+}))
+
+app.all('*', (req, res, next) => {
+    next(new ExpressError(404, 'Page Not Found'))
 })
 
-// app.get('/testlisting', async (req,res)=>{
-//     let sample = new listing({
-//         title: 'My Home',
-//         description : 'By beach',
-//         price : 100000,
-//         location : "Patna",
-//         country : 'India'
-//     })
+app.use((err, req, res, next) => {
+    let { status=500, message="Something went wrong" } = err
+    res.render('error.ejs', {message})
+    // res.status(status).send(message)
+})
 
-//     await sample.save().then((res)=>{
-//         console.log(res)
-//     }).catch((err)=>{
-//         console.log(err)
-//     })
-
-//     res.send('Success')
-// })
-
-app.listen(port, (req,res)=>{
+app.listen(port, (req, res) => {
     console.log('Sever listing')
 })
