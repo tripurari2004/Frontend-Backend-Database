@@ -15,6 +15,7 @@
 - **Frontend**: HTML5, CSS, Bootstrap
 - **Backend**: Node.js, Express.js,
 - **Database**: MongoDB (NoSQL database)
+- **Validation**: Joi (Schema Validation)
 
 ---
 

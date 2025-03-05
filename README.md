@@ -18,6 +18,7 @@ A collection of projects built using HTML , Tailwind CSS, showcasing my skills i
 + Node.js
 + Express
 + MongoDB
++ Joi for Schema Validation
 
 ---
   
