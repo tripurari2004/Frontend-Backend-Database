@@ -1,52 +1,68 @@
-const mongoose  = require('mongoose')
-const {Schema} = mongoose
+const mongoose = require('mongoose')
+const { Schema } = mongoose
 const review = require("./reviews.js")
 
 
 const listingSchema = new Schema({
-    title :{
-        type : String,
-        required : true
-    },
-    
-    description :{
-        type : String,
-        required : true
+    title: {
+        type: String,
+        required: true
     },
 
-    image :{ 
-        type : String,
-        default : "https://freedesignfile.com/upload/2017/05/Sunrise-tropical-island-beach-view-HD-picture-04.jpg",
-        set : (v) => v==="" ? "https://freedesignfile.com/upload/2017/05/Sunrise-tropical-island-beach-view-HD-picture-04.jpg" : v
+    description: {
+        type: String,
+        required: true
     },
 
-    price :{
-        type : Number,
-        required : true
+    image: {
+        url: String,
+        filename: String
     },
 
-    location :{
-        type : String,
-        required : true
+    price: {
+        type: Number,
+        required: true
     },
 
-    country :{
-        type : String,
-        required : true
+    location: {
+        type: String,
+        required: true
     },
 
-    reviews : [
+    country: {
+        type: String,
+        required: true
+    },
+
+    reviews: [
         {
-            type:Schema.Types.ObjectId,
-            ref:"Review"
+            type: Schema.Types.ObjectId,
+            ref: "Review"
         }
-    ]
+    ],
+
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
+    },
+
+    geometry: {
+        type: {
+            type: String, // Don't do `{ location: { type: String } }`
+            enum: ['Point'], // 'location.type' must be 'Point'
+            required: true
+        },
+        coordinates: {
+            type: [Number],
+            required: true
+        }
+    }
 
 })
 
-listingSchema.post('findOneAndDelete', async(listing)=>{
-    if(listing){
-         await review.deleteMany({_id: {$in: listing.reviews}})
+listingSchema.post('findOneAndDelete', async (listing) => {
+    if (listing) {
+        await review.deleteMany({ _id: { $in: listing.reviews } })
     }
 })
 
